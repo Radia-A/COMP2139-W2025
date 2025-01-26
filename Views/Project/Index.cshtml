@@ -1,0 +1,40 @@
+﻿@* indicates that the view expects a list of project objects as its model*@
+
+@model List<Project>
+
+@{
+    ViewBag.Title = "List of Projects";
+    Layout = "_Layout";
+}R
+
+<h2>Project Listing</h2>
+
+@if (Model.Any())
+{
+    //iteration
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <!-- Any other projects fields you desire -->
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var project in Model)
+    {
+        <tr>
+            <th>@project.ProjectId</th>
+            <th>@project.Name</th>
+            <th>@project.Description</th>
+            <!-- Any other projects fields you desire -->
+        </tr>
+    }
+    </tbody>
+    </table>
+}
+else
+{
+    <p>No Projects Available</p>
+}
